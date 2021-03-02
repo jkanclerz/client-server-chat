@@ -5,9 +5,10 @@ import sys
 server = socket(AF_INET, SOCK_STREAM)
 
 IP_address = str('127.0.0.1') if len(sys.argv) < 2 else str(sys.argv[1])
-Port = int(9999) if len(sys.argv) else int(sys.argv[2])
+Port = int(9999) if len(sys.argv) < 2 else int(sys.argv[2])
+print((IP_address, Port))
+
 server.connect((IP_address, Port)) 
-  
 while True: 
   
     # maintains a list of possible input streams 

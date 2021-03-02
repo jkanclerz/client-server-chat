@@ -4,6 +4,7 @@ from socket import AF_INET, socket, SOCK_STREAM
 from threading import Thread
 import time
 from datetime import datetime
+import sys
 
 
 def accept_incoming_connections():
@@ -63,11 +64,11 @@ def ping():
 clients = {}
 addresses = {}
 
-HOST = ''
-PORT = 9999
+HOST = sys.argv[1] if len(sys.argv) > 2 else '' 
+PORT = int(sys.argv[2]) if len(sys.argv) > 2 else 9999
 BUFSIZ = 2048
 ADDR = (HOST, PORT)
-
+print(ADDR)
 SERVER = socket(AF_INET, SOCK_STREAM)
 SERVER.bind(ADDR)
 
